@@ -1,5 +1,5 @@
 {
-  "name": "elasticsearch",
+  "name": "viewersearch",
   "version": "1.0.0",
   "description": "Elastic Search Sample",
   "main": "server.js",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JohnOnSoftware/Forge.Viewer.Classroom.Trainning#readme",
   "dependencies": {
+    "elasticsearch": "^13.0.1",
     "express": "^4.14.0",
     "request": "^2.74.0",
     "serve-favicon": "^2.3.0"

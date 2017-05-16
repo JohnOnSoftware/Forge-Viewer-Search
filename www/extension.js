@@ -285,25 +285,33 @@ Viewing.ClassroomTrainning.Extension.prototype.createDivToolbar = function () {
     if( g_instanceTree === null )
       return;
 
-    // g_instanceTree.enumNodeFragments(dbid, function (fragId) {
-    //   console.log('dbId: ' + dbid + ' FragId : ' + fragId)
-    //   var mesh = _viewer.impl.getFragmentProxy( _viewer.model, fragId)
-    //   var renderp = _viewer.impl.getRenderProxy( _viewer.model, fragId)
-    //   mesh.getAnimTransform()
+    g_instanceTree.enumNodeFragments(dbid, function (fragId) {
+      console.log('dbId: ' + dbid + ' FragId : ' + fragId)
+      var mesh = _viewer.impl.getFragmentProxy( _viewer.model, fragId)
+      var renderp = _viewer.impl.getRenderProxy( _viewer.model, fragId)
+      mesh.getAnimTransform()
 
-    //   var dst = new THREE.Matrix4()
+      var dst = new THREE.Matrix4()
 
-    //   var wm = mesh.getWorldMatrix(dst)
-    //   var position = new THREE.Vector3(
-    //     mesh.position.x + 1,
-    //     mesh.position.y + 1,
-    //     mesh.position.z)
-    //   console.log('before location: x: ' + mesh.position.x + ' y: ' + mesh.position.y + ' z: ' + mesh.position.z)
+      var wm = mesh.getWorldMatrix(dst)
+      // var position = new THREE.Vector3(
+      //   mesh.position.x + 1,
+      //   mesh.position.y + 1,
+      //   mesh.position.z)
+      console.log('location: x: ' + dst.getPosition().x + ' y: ' + dst.getPosition().y + ' z: ' + dst.getPosition().z)
 
-    //   mesh.position = position
-    //   mesh.updateAnimTransform()
-    //   console.log('after location: x: ' + mesh.position.x + ' y: ' + mesh.position.y + ' z: ' + mesh.position.z)
-    // }, false)
+      $.ajax({
+        url: '/search/index',
+        type: 'GET',
+        success: function (data) {
+          console.log('successfull find result ' + data)
+        }
+      })
+
+      // mesh.position = position
+      // mesh.updateAnimTransform()
+      // console.log('after location: x: ' + mesh.position.x + ' y: ' + mesh.position.y + ' z: ' + mesh.position.z)
+    }, false)
   }
 
   var ctrGroup = new Autodesk.Viewing.UI.ControlGroup('my-seperated-toolbar')
@@ -311,32 +319,17 @@ Viewing.ClassroomTrainning.Extension.prototype.createDivToolbar = function () {
   button3.icon.style.backgroundImage = 'url(../img/button.png)'
   button3.setToolTip('I am a seperated button')
   button3.addClass('my-seperated-button')
+  // click this button to index all the elements
   button3.onClick = function () {
     console.log('I am a div button')
     _viewer.getObjectTree(function (instanceTree) {
       g_instanceTree = instanceTree;
       console.log('print the instance tree of this model.')
       var dbid = instanceTree.nodeAccess.rootId
-      // let rootNode = {
-      //   dbId: instanceTree.nodeAccess.rootId,
-      //   name: instanceTree.getNodeName(instanceTree.nodeAccess.rootId)
-      // }
+
       indexNode(dbid)
       recursiveIndexChildNode( dbid)
     })
-
-    // $.ajax({
-    //   url: '/db/price/'+nodeName,
-    //   type: 'GET',
-    //   success: function (data) {
-    //     console.log('successfull get price: ' + data)
-    //     _panel.addProperty(
-    //       'Node Price', // property name
-    //       data, // property value
-    //       'Database Information') // group name
-    //   }
-    // })
-
   }
 
   ctrGroup.addControl(button3)
