@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Very Basic 3D Viewer</title>
+  <link rel="stylesheet" href="./lib/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="MyViewerDiv"></div>
+
+  <!-- The Viewer JS -->
+  <script src="./lib/three.js"></script>
+  <script src="./lib/viewer3D.js"></script>
+  <script src="./lib/jquery-3.2.1.js"></script>
+  <script src="./extension.js"></script>
+
+  <!-- Developer JS -->
+  <script>
+
+      var config3d = {
+          extensions: ['MyExtension']
+      };
+      var myViewerDiv = document.getElementById('MyViewerDiv');
+      var viewer = new Autodesk.Viewing.Private.GuiViewer3D(myViewerDiv);
+      var options = {
+          'env' : 'Local',
+          'document' : './house/37622ef7-5719-c2f8-517b-128994432401/3D_View/_3D_ 960621/_3D_.svf'
+      };
+      Autodesk.Viewing.Initializer(options, function() {
+        viewer.initialize();
+        viewer.loadModel(options.document, options);
+        viewer.loadExtension('MyExtension');
+      });
+  </script>
+</body>
+
+</html>
