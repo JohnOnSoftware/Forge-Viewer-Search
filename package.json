@@ -19,9 +19,9 @@
   "author": "Zhong Wu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JohnOnSoftware/Forge.Viewer.Classroom.Trainning/issues"
+    "url": "https://github.com/JohnOnSoftware/Forge-Viewer-Search/issues"
   },
-  "homepage": "https://github.com/JohnOnSoftware/Forge.Viewer.Classroom.Trainning#readme",
+  "homepage": "https://github.com/JohnOnSoftware/Forge-Viewer-Search#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "elasticsearch": "^13.0.1",

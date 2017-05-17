@@ -22,24 +22,24 @@ IN AN ACTION OF CONTRACT, TORTOR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-AutodeskNamespace('Viewing.ClassroomTrainning')
+AutodeskNamespace('ElasticSearch')
 
-Viewing.ClassroomTrainning.Extension = function (viewer, option) {
+ElasticSearch.Extension = function (viewer, option) {
   Autodesk.Viewing.Extension.call(this, viewer, option)
   _viewer = viewer
   _self = this
 }
 
-Viewing.ClassroomTrainning.Extension.prototype = Object.create(Autodesk.Viewing.Extension.prototype)
-Viewing.ClassroomTrainning.Extension.prototype.constructor = Viewing.ClassroomTrainning.Extension
+ElasticSearch.Extension.prototype = Object.create(Autodesk.Viewing.Extension.prototype)
+ElasticSearch.Extension.prototype.constructor = ElasticSearch.Extension
 
-Viewing.ClassroomTrainning.Extension.prototype.onToolbarCreated = function (e) {
+ElasticSearch.Extension.prototype.onToolbarCreated = function (e) {
   console.log('toolbar created event is called')
   _viewer.removeEventListener(Autodesk.Viewing.TOOLBAR_CREATED_EVENT, _self.onToolbarCreated)
   _self.createMyUI()
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.createToggler = function (button, click, unclick) {
+ElasticSearch.Extension.prototype.createToggler = function (button, click, unclick) {
   return function () {
     var state = button.getState()
     if (state === Autodesk.Viewing.UI.Button.State.INACTIVE) {
@@ -52,7 +52,7 @@ Viewing.ClassroomTrainning.Extension.prototype.createToggler = function (button,
   }
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.screenPointToHitPoint = function (screenPoint) {
+ElasticSearch.Extension.prototype.screenPointToHitPoint = function (screenPoint) {
   var viewport = _viewer.navigation.getScreenViewport()
   var n = {
     x: (screenPoint.x - viewport.left) / viewport.width,
@@ -63,7 +63,7 @@ Viewing.ClassroomTrainning.Extension.prototype.screenPointToHitPoint = function 
   return hitPoint
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.createDivToolbar = function () {
+ElasticSearch.Extension.prototype.createDivToolbar = function () {
   var createToggleButton = function () {
     var geoMaterial = null
 
@@ -244,12 +244,12 @@ Viewing.ClassroomTrainning.Extension.prototype.createDivToolbar = function () {
   $('#divToolbar')[0].appendChild(ctrGroup.container)
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.createMyUI = function () {
+ElasticSearch.Extension.prototype.createMyUI = function () {
   console.log('create UI')
   _self.createDivToolbar()
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.load = () => {
+ElasticSearch.Extension.prototype.load = () => {
   if (_viewer.toolbar) {
     _self.createMyUI()
   }else {
@@ -257,15 +257,15 @@ Viewing.ClassroomTrainning.Extension.prototype.load = () => {
     console.log('Events are registered')
   }
 
-  console.log('My extension is loaded')
+  console.log('ElasticSearch extension is loaded')
   return true
 }
 
-Viewing.ClassroomTrainning.Extension.prototype.unload = () => {
-  console.log('My extension is unloaded')
+ElasticSearch.Extension.prototype.unload = () => {
+  console.log('ElasticSearch extension is unloaded')
   _viewer.toolbar.removeControl(_self.subToolbar)
   return true
 }
 
 Autodesk.Viewing.theExtensionManager.registerExtension(
-  'MyExtension', Viewing.ClassroomTrainning.Extension)
+  'ElasticSearchExtension', ElasticSearch.Extension)
