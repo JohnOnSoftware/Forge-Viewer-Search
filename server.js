@@ -25,9 +25,15 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 var favicon = require('serve-favicon');
 var express = require('express');
 var search = require('./routes/search.js');
-
-
+var bodyParser = require('body-parser');
 var app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 
 app.use('/', express.static(__dirname + '/www'));
 app.use(favicon(__dirname + '/www/img/favicon.ico'));

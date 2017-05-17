@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/JohnOnSoftware/Forge.Viewer.Classroom.Trainning#readme",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "elasticsearch": "^13.0.1",
     "express": "^4.14.0",
     "request": "^2.74.0",
