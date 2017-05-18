@@ -234,6 +234,7 @@ ElasticSearch.Extension.prototype.createDivToolbar = function () {
 
       indexNode(dbid)
       recursiveIndexChildNode(dbid)
+      alert('Finished Index all the fragement in the model.')
     })
   }
 

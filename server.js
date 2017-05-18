@@ -25,6 +25,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 var favicon = require('serve-favicon');
 var express = require('express');
 var search = require('./routes/search.js');
+var solrsearch = require('./routes/solrsearch');
 var bodyParser = require('body-parser');
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(bodyParser.json())
 app.use('/', express.static(__dirname + '/www'));
 app.use(favicon(__dirname + '/www/img/favicon.ico'));
 app.use('/search', search);
+app.use('/solrsearch', solrsearch);
 
 
 app.set('port', process.env.PORT || 3000);
