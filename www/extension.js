@@ -118,14 +118,14 @@ ElasticSearch.Extension.prototype.createDivToolbar = function () {
           }
         })
 
-      // create a sphere    
-      var sphere = new THREE.SphereGeometry(1, 32)
-      var mesh = new THREE.Mesh(sphere, geoMaterial)
-      mesh.renderOrder = 1
-      mesh.position.set(worldPoint.x, worldPoint.y, worldPoint.z)
-      _viewer.impl.scene.add(mesh)
-      console.log('created a mesh and added to the scene.' + mesh.name)
-      _viewer.impl.sceneUpdated(true)
+        // create a sphere    
+        var sphere = new THREE.SphereGeometry(1, 32)
+        var mesh = new THREE.Mesh(sphere, geoMaterial)
+        mesh.renderOrder = 1
+        mesh.position.set(worldPoint.x, worldPoint.y, worldPoint.z)
+        _viewer.impl.scene.add(mesh)
+        console.log('created a mesh and added to the scene.' + mesh.name)
+        _viewer.impl.sceneUpdated(true)
       }
       else
         console.log('can not find a point by click')
@@ -133,12 +133,12 @@ ElasticSearch.Extension.prototype.createDivToolbar = function () {
 
     var toggleButtonOn = function () {
       initMaterial()
-      $('#MyViewerDiv').bind('click', createGeometry)
+      $('#forgeViewer').bind('click', createGeometry)
     }
 
     var toggleButtonOff = function () {
       uninitMaterial()
-      $('#MyViewerDiv').unbind('click', createGeometry)
+      $('#forgeViewer').unbind('click', createGeometry)
     }
 
     var toggleButton = new Autodesk.Viewing.UI.Button('my-toggle-button')
@@ -264,7 +264,8 @@ ElasticSearch.Extension.prototype.load = () => {
 
 ElasticSearch.Extension.prototype.unload = () => {
   console.log('ElasticSearch extension is unloaded')
-  _viewer.toolbar.removeControl(_self.subToolbar)
+  $('#divToolbar').remove()
+
   return true
 }
 

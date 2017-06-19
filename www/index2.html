@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forge Model Derivative API sample</title>
+    <link rel="stylesheet" href="/css/jstree.style.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/index.css"/>
+    <!--type="text/css">-->
+
+    <script language="JavaScript" src="/js/jquery.min.js"></script>
+    <script language="JavaScript" src="/js/jquery.storageapi.min.js"></script>
+    <script language="JavaScript" src="/js/scripts.js"></script>
+    <script language="JavaScript" src="/js/jstree.js"></script>
+    <script language="JavaScript" src="/js/bootstrap.min.js"></script>
+
+  
+    <!-- The Viewer JS -->
+    <script language="JavaScript" src="./lib/three.js"></script>
+    <script language="JavaScript" src="./lib/viewer3D.js"></script>
+
+    <script language="JavaScript" src="./extension.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h3>Elastic Search Sample</h3>
+        <h4>Select an item version to show a file using <a href="https://developer.autodesk.com/api/viewerapi/">
+                Autodesk Viewer</a>
+        </h4>
+        <div class="row">
+            <div class="col-sm-3" style="height:40px">
+
+                <a href="#" id="authenticate" class="btn btn-warning btn-block">
+                    <span class="glyphicon glyphicon-user"></span>
+                    Log In
+                </a>
+            </div>
+            <div class="col-sm-3" style="height:40px">
+                <div id="wipVsStorage" class="btn btn-primary active" data-toggle="button" aria-pressed="false" autocomplete="off" style="font-size: 10pt; visibility: hidden;">
+                    <span id="wipVsStorageText">Use WIP (instead of Storage)</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style="height:40px">
+                <div id="progressInfo" class="btn btn-info" style="font-size: 10pt ">
+                    <span id="progressInfoText">Progress info</span>
+                    <span id="progressInfoIcon"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="row" style="background: white">
+            <div class="col-sm-3 forgeTreeContainer">
+                <div id="forgeFiles">
+
+                </div>
+                <div id="forgeUpload" class="forgeControlContainer" style="visibility:hidden">
+                    <div style="display: inline-block">
+                        <a id="uploadFile" class="btn btn-warning" disabled>
+                            <span class="glyphicon glyphicon-open-file"></span>
+                            Upload attachment
+                        </a>
+                    </div>
+                    <input type="file" id="forgeUploadHidden" name="file"/>
+                </div>
+            </div>
+
+            <div class="col-sm-5 forgeViewer">
+                <div id="forgeViewer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
