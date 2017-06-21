@@ -573,7 +573,7 @@ function prepareFilesTree () {
 
     if (data.node.type === 'versions') {
       // $('#deleteManifest').removeAttr('disabled')
-      // $('#uploadFile').removeAttr('disabled')
+      $('#uploadFile').removeAttr('disabled')
 
       // MyVars.keepTrying = true
       // MyVars.selectedNode = data.node
@@ -602,24 +602,24 @@ function prepareFilesTree () {
         MyVars.selectedUrn = base64encode(data.node.original.storage)
       }
 
-      // // Fill hierarchy tree
-      // // format, urn, guid, objectIds, rootFileName, fileExtType
-      // showHierarchy(
-      //   MyVars.selectedUrn,
-      //   null,
-      //   null,
-      //   MyVars.rootFileName,
-      //   MyVars.fileExtType
-      // )
-      // console.log(
-      //   'data.node.original.storage = ' + data.node.original.storage,
-      //   'data.node.original.wipid = ' + data.node.original.wipid,
-      //   ', data.node.original.fileName = ' + data.node.original.fileName,
-      //   ', data.node.original.fileExtType = ' + data.node.original.fileExtType
-      // )
+      // Fill hierarchy tree
+      // format, urn, guid, objectIds, rootFileName, fileExtType
+      showHierarchy(
+        MyVars.selectedUrn,
+        null,
+        null,
+        MyVars.rootFileName,
+        MyVars.fileExtType
+      )
+      console.log(
+        'data.node.original.storage = ' + data.node.original.storage,
+        'data.node.original.wipid = ' + data.node.original.wipid,
+        ', data.node.original.fileName = ' + data.node.original.fileName,
+        ', data.node.original.fileExtType = ' + data.node.original.fileExtType
+      )
 
-      // Show in viewer
-      initializeViewer(data.node.data)
+    // Show in viewer
+    // initializeViewer(data.node.data)
     } else {
       $('#deleteManifest').attr('disabled', 'disabled')
       $('#uploadFile').attr('disabled', 'disabled')
@@ -992,7 +992,7 @@ function cleanupViewer () {
 
     MyVars.viewer.impl.unloadModel(MyVars.viewer.model)
     MyVars.viewer.tearDown()
-    // MyVars.viewer.impl.sceneUpdated(true)
+  // MyVars.viewer.impl.sceneUpdated(true)
   }
 }
 
